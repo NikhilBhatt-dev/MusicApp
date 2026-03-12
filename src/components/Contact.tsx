@@ -42,7 +42,7 @@ const Contact = () => {
           >
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_subject" value="New Portfolio Message" />
+            <input type="hidden" name="_subject" value="New MusicSchool Message" />
 
             <label className="flex flex-col gap-3">
               <span className="text-sm font-medium text-neutral-200">Full Name</span>
