@@ -82,29 +82,36 @@ export const WavyBackground = ({
     }
   };
 
-  let animationId: number;
+
+  const animationId = useRef<number | null>(null);
   const render = () => {
     ctx.fillStyle = backgroundFill || "black";
     ctx.globalAlpha = waveOpacity || 0.5;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
-    animationId = requestAnimationFrame(render);
+    animationId.current = requestAnimationFrame(render);
   };
 
+  
   useEffect(() => {
     init();
+
     return () => {
-      cancelAnimationFrame(animationId);
+      if (animationId.current) {
+        cancelAnimationFrame(animationId.current);
+      }
     };
-  }, []);
+  }, [init]);
+  
+
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {
     // I'm sorry but i have got to support it on safari.
     setIsSafari(
       typeof window !== "undefined" &&
-        navigator.userAgent.includes("Safari") &&
-        !navigator.userAgent.includes("Chrome")
+      navigator.userAgent.includes("Safari") &&
+      !navigator.userAgent.includes("Chrome")
     );
   }, []);
 

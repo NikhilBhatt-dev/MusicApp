@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, Transition } from "framer-motion";
+import Image from "next/image";
 const transition: Transition = {
   type: "spring",
   mass: 0.5,
@@ -85,7 +86,7 @@ export const ProductItem = ({
 }) => {
   return (
     <a href={href} className="flex space-x-2">
-      <img
+      <Image
         src={src}
         width={140}
         height={70}
